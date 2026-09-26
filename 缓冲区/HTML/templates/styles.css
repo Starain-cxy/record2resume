@@ -1,0 +1,173 @@
+:root {
+  --ink: #221c24;
+  --muted: #6a616e;
+  --accent: #4a1259;
+  --accent-soft: #f1eaf4;
+  --paper: #fff;
+  --canvas: #f0edf1;
+  --rule: color-mix(in srgb, var(--accent) 55%, white);
+  --font-sans: Inter, "Segoe UI Variable Text", "Segoe UI", "Microsoft YaHei UI", sans-serif;
+  --font-serif: "Iowan Old Style", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --body-font: var(--font-sans);
+  --display-font: var(--font-serif);
+  --page-width: 210mm;
+  --page-min-height: 297mm;
+  --page-pad-x: 15mm;
+  --page-pad-y: 14mm;
+  --content-width: 1120px;
+  --body-size: 0.96rem;
+  --body-leading: 1.55;
+  --entry-gap: 1rem;
+  --section-gap: 1.7rem;
+  --radius: 14px;
+  color: var(--ink);
+  font-family: var(--body-font);
+  font-size: 16px;
+  line-height: var(--body-leading);
+  font-synthesis: none;
+}
+
+html[data-font="sans"] { --body-font: var(--font-sans); --display-font: var(--font-sans); }
+html[data-font="serif"] { --body-font: var(--font-serif); --display-font: var(--font-serif); }
+html[data-font="mixed"] { --body-font: var(--font-sans); --display-font: var(--font-serif); }
+html[data-density="standard"] { --body-size: 0.92rem; --body-leading: 1.46; --entry-gap: 0.78rem; --section-gap: 1.38rem; }
+html[data-density="compact"] { --body-size: 0.86rem; --body-leading: 1.36; --entry-gap: 0.56rem; --section-gap: 1.05rem; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--canvas); }
+h1, h2, h3, p, li, dd { overflow-wrap: anywhere; }
+a { color: var(--accent); text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 0.13em; }
+a:focus-visible, button:focus-visible { outline: 3px solid #e69f00; outline-offset: 3px; }
+
+.preview-tools {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.7rem max(1rem, calc((100vw - var(--content-width)) / 2));
+  background: color-mix(in srgb, #fff 90%, transparent);
+  border-bottom: 1px solid #ddd6de;
+  backdrop-filter: blur(12px);
+}
+.preview-tools button {
+  border: 1px solid #cdc5d0;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  padding: 0.48rem 0.82rem;
+  font: 600 0.84rem/1 var(--font-sans);
+  cursor: pointer;
+}
+.preview-tools button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.layout-status { margin-left: auto; color: var(--muted); font-size: 0.82rem; }
+
+.resume-shell { padding: clamp(1rem, 3vw, 3.5rem); }
+.resume {
+  width: min(100%, var(--content-width));
+  margin: 0 auto;
+  padding: clamp(1.6rem, 4vw, 4.5rem);
+  background: var(--paper);
+  border: 1px solid #e1dbe4;
+  border-radius: var(--radius);
+  box-shadow: 0 24px 70px rgb(38 24 43 / 0.12);
+  font-size: var(--body-size);
+}
+.resume-header { position: relative; padding: 0 0 1.45rem; border-bottom: 1px solid var(--rule); }
+.resume-header::before { content: ""; position: absolute; inset: auto auto -1px 0; width: 5.2rem; height: 3px; background: var(--accent); }
+.eyebrow { margin: 0 0 0.32rem; color: var(--accent); font: 700 0.72rem/1.3 var(--font-sans); letter-spacing: 0.17em; }
+h1 { margin: 0; color: var(--accent); font: 650 clamp(2.55rem, 6vw, 4.8rem)/0.98 var(--display-font); letter-spacing: 0.035em; }
+.headline { max-width: 48rem; margin: 0.65rem 0 0; color: var(--muted); font-size: 1.08em; }
+.contacts { display: flex; flex-wrap: wrap; gap: 0.34rem 0.7rem; margin-top: 0.8rem; font-style: normal; }
+
+.resume-section { margin-top: var(--section-gap); }
+.resume-section > h2 { display: flex; align-items: center; gap: 0.6rem; margin: 0 0 0.72rem; color: var(--accent); font: 650 1.38rem/1.15 var(--display-font); }
+.resume-section > h2::before { content: ""; flex: none; width: 0.48em; height: 0.48em; border-radius: 2px; background: var(--accent); }
+.resume-section > h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.entry + .entry { margin-top: var(--entry-gap); }
+.entry { break-inside: avoid; page-break-inside: avoid; }
+.entry-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; align-items: start; }
+.entry h3 { margin: 0; font-size: 1em; line-height: 1.28; }
+.entry-meta { margin: 0.12rem 0 0; color: var(--muted); font-style: italic; }
+.entry-aside { display: grid; justify-items: end; color: var(--muted); white-space: nowrap; font-size: 0.94em; }
+.entry-aside time { color: var(--ink); font-weight: 650; }
+.entry-points { margin: 0.3rem 0 0; padding-left: 1.25rem; }
+.entry-points li + li { margin-top: 0.19em; }
+.fact-list { display: grid; gap: 0.27rem; margin: 0; }
+.fact-list > div { display: grid; grid-template-columns: max-content 1fr; gap: 0.3rem 0.62rem; }
+.fact-list dt { font-weight: 700; }
+.fact-list dt::after { content: "："; }
+.fact-list dd { margin: 0; }
+
+html[data-view="print"] body { background: var(--canvas); }
+html[data-view="print"] .resume-shell { padding: 24px; }
+html[data-view="print"] .resume {
+  width: var(--page-width);
+  min-height: var(--page-min-height);
+  padding: var(--page-pad-y) var(--page-pad-x);
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 10px 35px rgb(18 37 52 / 0.16);
+}
+html[data-view="print"] h1 { font-size: 2.2rem; }
+html[data-view="print"] .resume-header { text-align: center; padding-bottom: 0.72rem; }
+html[data-view="print"] .resume-header::before { left: 50%; transform: translateX(-50%); }
+html[data-view="print"] .contacts { justify-content: center; }
+
+/* A strict one-page resume needs its own print rhythm. Screen spacing remains
+   comfortable; this profile keeps a tighter single-page A4 rhythm instead. */
+html[data-view="print"][data-pagination="single"] {
+  --page-pad-x: 12.5mm;
+  --page-pad-y: 10mm;
+  --body-size: 9.35pt;
+  --body-leading: 1.34;
+  --entry-gap: 0.43rem;
+  --section-gap: 0.72rem;
+}
+html[data-view="print"][data-pagination="single"] .resume-header { padding-bottom: 0.5rem; }
+html[data-view="print"][data-pagination="single"] .eyebrow { display: none; }
+html[data-view="print"][data-pagination="single"] h1 { font-size: 25pt; line-height: 1; }
+html[data-view="print"][data-pagination="single"] .headline { margin-top: 0.25rem; font-size: 1em; }
+html[data-view="print"][data-pagination="single"] .contacts { margin-top: 0.3rem; }
+html[data-view="print"][data-pagination="single"] .resume-section > h2 { margin-bottom: 0.34rem; font-size: 14.5pt; }
+html[data-view="print"][data-pagination="single"] .entry-header { line-height: 1.22; }
+html[data-view="print"][data-pagination="single"] .entry-meta { margin-top: 0.02rem; }
+html[data-view="print"][data-pagination="single"] .entry-points { margin-top: 0.14rem; }
+html[data-view="print"][data-pagination="single"] .entry-points li + li { margin-top: 0.06em; }
+html[data-view="print"][data-pagination="single"] .fact-list { gap: 0.08rem; }
+
+@media (max-width: 680px) {
+  .preview-tools { position: static; flex-wrap: wrap; }
+  .layout-status { width: 100%; margin: 0; }
+  .resume-shell { padding: 0; }
+  .resume { border: 0; border-radius: 0; box-shadow: none; padding: 1.35rem 1rem 2.5rem; }
+  .entry-header { grid-template-columns: 1fr; gap: 0.12rem; }
+  .entry-aside { justify-items: start; grid-auto-flow: column; justify-content: start; gap: 0.55rem; white-space: normal; }
+  .fact-list > div { grid-template-columns: 1fr; gap: 0; }
+}
+
+@page { size: A4; margin: 0; }
+@media print {
+  :root { --canvas: #fff; }
+  .preview-tools { display: none !important; }
+  body { background: #fff !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .resume-shell { padding: 0 !important; }
+  .resume {
+    width: 210mm !important;
+    min-height: 297mm;
+    margin: 0 !important;
+    padding: var(--page-pad-y) var(--page-pad-x) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .resume-section > h2 { break-after: avoid; page-break-after: avoid; }
+  .entry-header { break-after: avoid; page-break-after: avoid; }
+  .entry, .entry-points li, .fact-list > div { break-inside: avoid; page-break-inside: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

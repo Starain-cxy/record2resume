@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN" data-view="screen" data-pagination="single" data-font="mixed" data-density="comfortable">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>姓名｜个人简历</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="resume.js" defer></script>
+</head>
+<body>
+  <nav class="preview-tools" aria-label="预览工具">
+    <button type="button" data-set-view="screen" aria-pressed="true">网页视图</button>
+    <button type="button" data-set-view="print" aria-pressed="false">打印预览</button>
+    <button type="button" data-print>导出 PDF</button>
+    <output class="layout-status" aria-live="polite"></output>
+  </nav>
+
+  <div class="resume-shell">
+    <main class="resume" id="resume">
+      <header class="resume-header">
+        <p class="eyebrow">领域 · 方法 · 研究方向</p>
+        <h1>姓名</h1>
+        <p class="headline">一句克制、准确的专业定位</p>
+        <address class="contacts" aria-label="联系方式">
+          <a href="mailto:public@example.com">public@example.com</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://github.com/username">GitHub</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://example.com">个人主页</a>
+        </address>
+      </header>
+
+      <section class="resume-section" aria-labelledby="education-title">
+        <h2 id="education-title">教育背景</h2>
+        <article class="entry">
+          <header class="entry-header">
+            <div>
+              <h3>大学名称</h3>
+              <p class="entry-meta">统计学｜本科</p>
+            </div>
+            <div class="entry-aside">
+              <time>2023.09 — 2026.06</time>
+              <span>上海</span>
+            </div>
+          </header>
+          <ul class="entry-points">
+            <li><strong>成绩：</strong>填写可核验的绩点与排名。</li>
+            <li><strong>专业课程：</strong>将课程成绩统一放在同一语义条目中。</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="resume-section" aria-labelledby="experience-title">
+        <h2 id="experience-title">工作与科研经历</h2>
+        <article class="entry featured">
+          <header class="entry-header">
+            <div>
+              <h3>组织或项目名称</h3>
+              <p class="entry-meta">角色或职位</p>
+            </div>
+            <div class="entry-aside">
+              <time>2026.01 — 至今</time>
+              <span>地点</span>
+            </div>
+          </header>
+          <ul class="entry-points">
+            <li>说明真实问题、个人职责和行动，不把完整项目压缩成一句话。</li>
+            <li>说明使用的方法、关键判断、交付物或可核验结果。</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="resume-section" aria-labelledby="projects-title">
+        <h2 id="projects-title">项目与竞赛经历</h2>
+        <article class="entry">
+          <header class="entry-header">
+            <div>
+              <h3>项目名称</h3>
+              <p class="entry-meta">个人角色｜奖项或研究主题</p>
+            </div>
+            <div class="entry-aside"><time>2025</time></div>
+          </header>
+          <ul class="entry-points">
+            <li>用行动、方法和结果组织第一条证据。</li>
+            <li>补充与第一条不同的个人贡献或技术细节。</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="resume-section compact-section" aria-labelledby="skills-title">
+        <h2 id="skills-title">荣誉与技能</h2>
+        <dl class="fact-list">
+          <div><dt>荣誉奖项</dt><dd>奖项、级别和年份</dd></div>
+          <div><dt>技术技能</dt><dd>有事实依据的语言、工具和方法</dd></div>
+          <div><dt>语言能力</dt><dd>可核验的考试成绩或工作能力</dd></div>
+        </dl>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

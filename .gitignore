@@ -1,0 +1,13 @@
+# 临时文件与预览输出
+.tmp/
+tmp/
+
+# 生成的成品（简历网页按需保留，PDF 与预览图默认不入库）
+output/**/*.pdf
+output/**/*.png
+
+# 编辑器与系统文件
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
